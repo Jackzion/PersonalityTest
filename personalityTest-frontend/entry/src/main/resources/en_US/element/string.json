@@ -1,0 +1,24 @@
+{
+  "string": [
+    {
+      "name": "module_desc",
+      "value": "module description"
+    },
+    {
+      "name": "EntryAbility_desc",
+      "value": "description"
+    },
+    {
+      "name": "EntryAbility_label",
+      "value": "label"
+    },
+    {
+      "name": "sexTitle",
+      "value": "please choose your sex"
+    },
+    {
+      "name": "methodTitle",
+      "value": "请选择测试方式"
+    }
+  ]
+}
