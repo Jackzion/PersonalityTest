@@ -69,3 +69,5 @@ INSERT INTO Results (id, ansCode, ansDisc, ansName, sequenceNumber) VALUES
                                                                         ('14', 'INTP', 'You are a thoughtful leader, analytical and curious.', 'The Thinker', 14),
                                                                         ('15', 'ISFP', 'You are a gentle leader, artistic and sensitive.', 'The Artist', 15),
                                                                         ('16', 'INFP', 'You are an idealistic leader, empathetic and open-minded.', 'The Mediator', 16);
+
+SELECT * FROM Results WHERE ansCode = 'INFJ';

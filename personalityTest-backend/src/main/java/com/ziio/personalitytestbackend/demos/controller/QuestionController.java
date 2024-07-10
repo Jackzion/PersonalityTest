@@ -71,7 +71,7 @@ public class QuestionController {
         return jsonObject;
     }
 
-    //分页查询
+    //分页查询 --- 这里固定
     @GetMapping("/getByPage/{page},{size}")
     public Object getByPage(@PathVariable("page") int page, @PathVariable("size") int size) {
         jsonObject.clear();

@@ -9,6 +9,7 @@ import com.ziio.personalitytestbackend.demos.model.Questions;
 import com.ziio.personalitytestbackend.demos.model.Results;
 import com.ziio.personalitytestbackend.demos.service.QuestionsService;
 import com.ziio.personalitytestbackend.demos.mapper.QuestionsMapper;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -22,6 +23,7 @@ import java.util.HashMap;
 * @createDate 2024-07-09 10:38:41
 */
 @Service
+@Slf4j
 public class QuestionsServiceImpl extends ServiceImpl<QuestionsMapper, Questions>
     implements QuestionsService{
 
@@ -74,10 +76,10 @@ public class QuestionsServiceImpl extends ServiceImpl<QuestionsMapper, Questions
         res = s > n ? res.append('S') : res.append('N');
         res = t > f ? res.append('T') : res.append('F');
         res = j > p ? res.append('J') : res.append('P');
-
+        res.toString()
         // 根据 res 获取性格信息
         QueryWrapper<Results> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("ansCode", res);
+        queryWrapper.eq("ansCode", res.toString());
         Results one = resultsMapper.selectOne(queryWrapper);
 
         AnsReturn ans = new AnsReturn(res.toString(), eRate, iRate, sRate, nRate, tRate, fRate, jRate, pRate, one.getAnsName(), one.getAnsDisc());

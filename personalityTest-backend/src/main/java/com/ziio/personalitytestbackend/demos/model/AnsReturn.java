@@ -16,6 +16,7 @@ public class AnsReturn {
     String fRate;
     String jRate;
     String pRate;
+
     String oneName;
     String oneDis;
 
