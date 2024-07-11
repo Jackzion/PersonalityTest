@@ -2,6 +2,7 @@
   // @Entry
 export struct ImageComponent {
   @State clicked: boolean = false;
+  @Prop oneName: string
   @Prop resStr: string
 
   // @State resStr: string = 'ENTP'
@@ -10,8 +11,7 @@ export struct ImageComponent {
     Row() {
       Column() {
         // todo : 每个类型选一张图
-        // Image($rawfile(this.resStr + ".png"))
-        Image($r("app.media.woman"))
+        Image($rawfile((this.resStr + ".png")))
           .width("60%")
           .height("60%")
           .objectFit(ImageFit.Contain)
@@ -40,7 +40,7 @@ export struct ImageComponent {
               playMode: PlayMode.Normal
             }
           )
-        Text(this.resStr)
+        Text(this.oneName)
           .fontSize(25)
           .width("90%")
           .height("20%")

@@ -76,7 +76,7 @@ public class QuestionsServiceImpl extends ServiceImpl<QuestionsMapper, Questions
         res = s > n ? res.append('S') : res.append('N');
         res = t > f ? res.append('T') : res.append('F');
         res = j > p ? res.append('J') : res.append('P');
-        res.toString()
+        res.toString();
         // 根据 res 获取性格信息
         QueryWrapper<Results> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("ansCode", res.toString());

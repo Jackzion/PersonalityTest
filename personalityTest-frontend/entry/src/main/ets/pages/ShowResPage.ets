@@ -9,7 +9,8 @@ struct ShowResPage {
 
   @State result : string = router.getParams()['ans'];
   @State resStr : string = '';
-  @State resShow : Res = new Res() ;
+  @State oneName : string = '';
+  @State resShow: Res = new Res('', '', '', '0', '0', '0', '0', '0' ,'0', '0','0') ;
 
   // 页面渲染前hook ， post请求
   aboutToAppear() {
@@ -26,25 +27,41 @@ struct ShowResPage {
         if (!err) {
           const response = data.result.toString();
           console.log("response：" + response);
-          const res  = JSON.parse(response).data
+          const res : Res  = JSON.parse(response).data
+          this.oneName = res.oneName;
+          this.resStr = res.res;
 
-          this.resStr = res.oneName;
           this.resShow = res;
-          console.log("this.resShow.res:" + this.resStr)
+          // this.resShow = new Res(res);
+          console.log("this.resShow.resStr:" + this.resStr)
           console.log("this.resShow.res:" + this.resShow.res)
+          console.log("this.resShow.irate:" + this.resShow.irate)
           // this.resStr = this.resShow.res
           // console.log("resStr:" + this.resStr)
 
         }
       })
   }
-
+  scroller : Scroller = new Scroller()
   build() {
     // todo : justifyContent
-    Column() {
-      Text("测试结果").fontSize(30).fontWeight(FontWeight.Bold)
-      ImageComponent({resStr:this.resStr});
-      PropertiesPanelComponent({resReturn:this.resShow})
+    Scroll(this.scroller){
+      Column() {
+        // 标题
+        Text("测试结果").fontSize(30).fontWeight(FontWeight.Bold)
+        // 结果图片
+        ImageComponent({resStr:this.resStr,oneName:this.oneName});
+        // 属性面板
+        PropertiesPanelComponent({resReturn:this.resShow})
+      }
+      .width("94%")
+      .margin({ left: 10, right: 10,top:10 ,bottom:10})
+      .justifyContent(FlexAlign.SpaceEvenly)
     }
+    .scrollable(ScrollDirection.Vertical) // 纵向滑动
+    .scrollBar(BarState.On) // 保持显示滑动条
+    .scrollBarColor(Color.White)
+    .scrollBarWidth(5)
+    .edgeEffect(EdgeEffect.Spring)
   }
 }
